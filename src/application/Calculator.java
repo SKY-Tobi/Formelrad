@@ -76,4 +76,8 @@ public class Calculator {
 	private double RausUundI(double u, double i) {
 		return u / i;
 	}
+	
+	private double RausPundI(double p, double i) {
+		return p / (i * i);
+	}
 }
