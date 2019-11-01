@@ -50,4 +50,8 @@ public class Calculator {
 	private double UausRundI(double r, double i) {
 		return r * i;
 	}
+	
+	private double UausPundI(double p, double i) {
+		return p / i;
+	}
 }
