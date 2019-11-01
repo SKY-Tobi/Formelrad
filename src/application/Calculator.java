@@ -43,22 +43,38 @@ public class Calculator {
 	}
 
 	public void calculate() {
-		if (widerstand != 0.0 && leistung != 0.0 && spannung == 0.0 && strom == 0.0) {
+		int notNullCounter = 0;
+		if (leistung != 0.0) {
+			notNullCounter++;
+		}
+		if (spannung != 0.0) {
+			notNullCounter++;
+		}
+		if (strom != 0.0) {
+			notNullCounter++;
+		}
+		if (widerstand != 0.0) {
+			notNullCounter++;
+		}
+		if (notNullCounter > 2) {
+			System.out.println("Warnung: Es wurden mehr als 2 Parameter eingegeben!");
+		}
+		if (widerstand != 0.0 && leistung != 0.0) {
 			spannung = uAusPundR(leistung, widerstand);
 			strom = iAusPundR(leistung, widerstand);
-		} else if (widerstand != 0.0 && leistung == 0.0 && spannung != 0.0 && strom == 0.0) {
+		} else if (widerstand != 0.0 && spannung != 0.0) {
 			leistung = pAusUundR(spannung, widerstand);
 			strom = iAusUundR(spannung, widerstand);
-		} else if (widerstand != 0.0 && leistung == 0.0 && spannung == 0.0 && strom != 0.0) {
+		} else if (widerstand != 0.0 && strom != 0.0) {
 			spannung = uAusRundI(widerstand, strom);
 			leistung = pAusRundI(widerstand, strom);
-		} else if (widerstand == 0.0 && leistung != 0.0 && spannung != 0.0 && strom == 0.0) {
+		} else if (leistung != 0.0 && spannung != 0.0) {
 			widerstand = rAusUundP(spannung, leistung);
 			strom = iAusPundU(leistung, spannung);
-		} else if (widerstand == 0.0 && leistung != 0.0 && spannung == 0.0 && strom != 0.0) {
+		} else if (leistung != 0.0 && strom != 0.0) {
 			widerstand = rAusPundI(leistung, strom);
 			spannung = uAusPundI(leistung, strom);
-		} else if (widerstand == 0.0 && leistung == 0.0 && spannung != 0.0 && strom != 0.0) {
+		} else if (spannung != 0.0 && strom != 0.0) {
 			widerstand = rAusUundI(spannung, strom);
 			leistung = pAusUundI(spannung, strom);
 		}
