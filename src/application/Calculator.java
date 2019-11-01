@@ -81,50 +81,62 @@ public class Calculator {
 	}
 
 	private double pAusUundI(double u, double i) {
+		System.out.println("Berechne Leistung aus Spannung und Strom");
 		return u * i;
 	}
 
 	private double pAusUundR(double u, double r) {
+		System.out.println("Berechne Leistung aus Spannung und Widerstand");
 		return (u * u) / r;
 	}
 
 	private double pAusRundI(double r, double i) {
+		System.out.println("Berechne Leistung aus Widerstand und Strom");
 		return r * i * i;
 	}
 
 	private double uAusRundI(double r, double i) {
+		System.out.println("Berechne Spannung aus Widerstand und Strom");
 		return r * i;
 	}
 
 	private double uAusPundI(double p, double i) {
+		System.out.println("Berechne Spannung aus Leistung und Strom");
 		return p / i;
 	}
 
 	private double uAusPundR(double p, double r) {
+		System.out.println("Berechne Spannung aus leistung und Widerstand");
 		return Math.sqrt(p * r);
 	}
 
 	private double iAusUundR(double u, double r) {
+		System.out.println("Berechne Strom aus Spannung und Widerstand");
 		return u / r;
 	}
 
 	private double iAusPundU(double p, double u) {
+		System.out.println("Berechne Strom aus Leistung und Spannung");
 		return p / u;
 	}
 
 	private double iAusPundR(double p, double r) {
+		System.out.println("Berechne Strom aus Leistung und Widerstand");
 		return Math.sqrt(p / r);
 	}
 
 	private double rAusUundI(double u, double i) {
+		System.out.println("Berechne Widerstand aus Spannung und Strom");
 		return u / i;
 	}
 
 	private double rAusPundI(double p, double i) {
+		System.out.println("Berechne Widerstand aus Leistung und Strom");
 		return p / (i * i);
 	}
 
 	private double rAusUundP(double u, double p) {
+		System.out.println("Berechne Widerstand aus Spannung und Leistung");
 		return (u * u) / p;
 	}
 
