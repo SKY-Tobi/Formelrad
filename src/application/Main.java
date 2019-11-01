@@ -82,6 +82,12 @@ public class Main extends Application {
 				double tension = 0.0;
 				double current = 0.0;
 				double resistence = 0.0;
+				
+				txLeistung.setStyle("-fx-text-fill: black");
+				txSpannung.setStyle("-fx-text-fill: black");
+				txStrom.setStyle("-fx-text-fill: black");
+				txWiderstand.setStyle("-fx-text-fill: black");
+				
 				if(txLeistung.getText().isEmpty()==false) {
 					power = Double.parseDouble(txLeistung.getText());
 				}
