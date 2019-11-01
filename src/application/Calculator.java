@@ -43,10 +43,19 @@ public class Calculator {
 	}
 
 	public void calculate() {
-		/*
-		 * Hier auf Grund der vorhanden Werte entscheiden welche Methode unten
-		 * aufgerufen werden muss.
-		 */
+		int notNullCounter = 0;
+		if (leistung != 0.0) {
+			notNullCounter++;
+		}
+		if (spannung != 0.0) {
+			notNullCounter++;
+		}
+		if (strom != 0.0) {
+			notNullCounter++;
+		}
+		if (widerstand != 0.0) {
+			notNullCounter++;
+		}
 	}
 
 	private double pAusUundI(double u, double i) {
@@ -84,16 +93,16 @@ public class Calculator {
 	private double IausPundR(double p, double r) {
 		return Math.sqrt(p / r);
 	}
-	
-	private double RausUundI(double u, double i) {
+
+	private double rausUundI(double u, double i) {
 		return u / i;
 	}
-	
-	private double RausPundI(double p, double i) {
+
+	private double rausPundI(double p, double i) {
 		return p / (i * i);
 	}
-	
-	private double RausUundP(double u, double p) {
+
+	private double rausUundP(double u, double p) {
 		return (u * u) / p;
 	}
 }
