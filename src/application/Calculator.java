@@ -80,4 +80,8 @@ public class Calculator {
 	private double RausPundI(double p, double i) {
 		return p / (i * i);
 	}
+	
+	private double RausUundP(double u, double p) {
+		return (u * u) / p;
+	}
 }
