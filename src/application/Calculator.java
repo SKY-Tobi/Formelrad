@@ -54,4 +54,8 @@ public class Calculator {
 	private double UausPundI(double p, double i) {
 		return p / i;
 	}
+	
+	private double UausPundR(double p, double r) {
+		return Math.sqrt(p * r);
+	}
 }
