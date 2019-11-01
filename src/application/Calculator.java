@@ -43,72 +43,100 @@ public class Calculator {
 	}
 
 	public void calculate() {
-		if (widerstand != 0.0 && leistung != 0.0 && spannung == 0.0 && strom == 0.0) {
+		int notNullCounter = 0;
+		if (leistung != 0.0) {
+			notNullCounter++;
+		}
+		if (spannung != 0.0) {
+			notNullCounter++;
+		}
+		if (strom != 0.0) {
+			notNullCounter++;
+		}
+		if (widerstand != 0.0) {
+			notNullCounter++;
+		}
+		if (notNullCounter > 2) {
+			System.out.println("Warnung: Es wurden mehr als 2 Parameter eingegeben!");
+		}
+		if (widerstand != 0.0 && leistung != 0.0) {
 			spannung = uAusPundR(leistung, widerstand);
 			strom = iAusPundR(leistung, widerstand);
-		} else if (widerstand != 0.0 && leistung == 0.0 && spannung != 0.0 && strom == 0.0) {
+		} else if (widerstand != 0.0 && spannung != 0.0) {
 			leistung = pAusUundR(spannung, widerstand);
 			strom = iAusUundR(spannung, widerstand);
-		} else if (widerstand != 0.0 && leistung == 0.0 && spannung == 0.0 && strom != 0.0) {
+		} else if (widerstand != 0.0 && strom != 0.0) {
 			spannung = uAusRundI(widerstand, strom);
 			leistung = pAusRundI(widerstand, strom);
-		} else if (widerstand == 0.0 && leistung != 0.0 && spannung != 0.0 && strom == 0.0) {
+		} else if (leistung != 0.0 && spannung != 0.0) {
 			widerstand = rAusUundP(spannung, leistung);
 			strom = iAusPundU(leistung, spannung);
-		} else if (widerstand == 0.0 && leistung != 0.0 && spannung == 0.0 && strom != 0.0) {
+		} else if (leistung != 0.0 && strom != 0.0) {
 			widerstand = rAusPundI(leistung, strom);
 			spannung = uAusPundI(leistung, strom);
-		} else if (widerstand == 0.0 && leistung == 0.0 && spannung != 0.0 && strom != 0.0) {
+		} else if (spannung != 0.0 && strom != 0.0) {
 			widerstand = rAusUundI(spannung, strom);
 			leistung = pAusUundI(spannung, strom);
 		}
 	}
 
 	private double pAusUundI(double u, double i) {
+		System.out.println("Berechne Leistung aus Spannung und Strom");
 		return u * i;
 	}
 
 	private double pAusUundR(double u, double r) {
+		System.out.println("Berechne Leistung aus Spannung und Widerstand");
 		return (u * u) / r;
 	}
 
 	private double pAusRundI(double r, double i) {
+		System.out.println("Berechne Leistung aus Widerstand und Strom");
 		return r * i * i;
 	}
 
 	private double uAusRundI(double r, double i) {
+		System.out.println("Berechne Spannung aus Widerstand und Strom");
 		return r * i;
 	}
 
 	private double uAusPundI(double p, double i) {
+		System.out.println("Berechne Spannung aus Leistung und Strom");
 		return p / i;
 	}
 
 	private double uAusPundR(double p, double r) {
+		System.out.println("Berechne Spannung aus leistung und Widerstand");
 		return Math.sqrt(p * r);
 	}
 
 	private double iAusUundR(double u, double r) {
+		System.out.println("Berechne Strom aus Spannung und Widerstand");
 		return u / r;
 	}
 
 	private double iAusPundU(double p, double u) {
+		System.out.println("Berechne Strom aus Leistung und Spannung");
 		return p / u;
 	}
 
 	private double iAusPundR(double p, double r) {
+		System.out.println("Berechne Strom aus Leistung und Widerstand");
 		return Math.sqrt(p / r);
 	}
 
 	private double rAusUundI(double u, double i) {
+		System.out.println("Berechne Widerstand aus Spannung und Strom");
 		return u / i;
 	}
 
 	private double rAusPundI(double p, double i) {
+		System.out.println("Berechne Widerstand aus Leistung und Strom");
 		return p / (i * i);
 	}
 
 	private double rAusUundP(double u, double p) {
+		System.out.println("Berechne Widerstand aus Spannung und Leistung");
 		return (u * u) / p;
 	}
 
