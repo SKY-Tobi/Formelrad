@@ -96,14 +96,17 @@ public class Calculator {
 	}
 
 	private double uAusRundI(double r, double i) {
+		System.out.println("Berechne Spannung aus Widerstand und Strom");
 		return r * i;
 	}
 
 	private double uAusPundI(double p, double i) {
+		System.out.println("Berechne Spannung aus Leistung und Strom");
 		return p / i;
 	}
 
 	private double uAusPundR(double p, double r) {
+		System.out.println("Berechne Spannung aus leistung und Widerstand");
 		return Math.sqrt(p * r);
 	}
 
