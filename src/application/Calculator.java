@@ -81,14 +81,17 @@ public class Calculator {
 	}
 
 	private double pAusUundI(double u, double i) {
+		System.out.println("Berechne Leistung aus Spannung und Strom");
 		return u * i;
 	}
 
 	private double pAusUundR(double u, double r) {
+		System.out.println("Berechne Leistung aus Spannung und Widerstand");
 		return (u * u) / r;
 	}
 
 	private double pAusRundI(double r, double i) {
+		System.out.println("Berechne Leistung aus Widerstand und Strom");
 		return r * i * i;
 	}
 
