@@ -53,4 +53,7 @@ public class Calculator {
 		 return u*i;
 		}
 	
+	private double pAusUundR(double u, double r) {
+		 return (u*u)/r;
+		}
 }
