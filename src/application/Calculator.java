@@ -44,14 +44,17 @@ public class Calculator {
 
 	public void calculate() {
 		if(widerstand != 0.0 && leistung != 0.0 && spannung == 0.0 && strom == 0.0) {
-			spannung = UausPundR(leistung, widerstand);
-			strom = IausPundR(leistung, widerstand);
+			spannung = uAusPundR(leistung, widerstand);
+			strom = iAusPundR(leistung, widerstand);
 		} else if (widerstand != 0.0 && leistung == 0.0 && spannung != 0.0 && strom == 0.0) {
 			leistung = pAusUundR(spannung, widerstand);
-			strom = IausUundR(spannung, widerstand);
+			strom = iAusUundR(spannung, widerstand);
 		} else if (widerstand != 0.0 && leistung == 0.0 && spannung == 0.0 && strom != 0.0) {
-			spannung = UausRundI(widerstand, strom);
+			spannung = uAusRundI(widerstand, strom);
 			leistung = pAusRundI(widerstand, strom);
+		} else if (widerstand == 0.0 && leistung != 0.0 && spannung != 0.0 && strom == 0.0) {
+			widerstand = rAusUundP(spannung, leistung);
+			strom = iAusPundU(leistung, spannung);
 		}
 	}
 
@@ -67,27 +70,39 @@ public class Calculator {
 		return r * i * i;
 	}
 
-	private double UausRundI(double r, double i) {
+	private double uAusRundI(double r, double i) {
 		return r * i;
 	}
 
-	private double UausPundI(double p, double i) {
+	private double uAusPundI(double p, double i) {
 		return p / i;
 	}
 
-	private double UausPundR(double p, double r) {
+	private double uAusPundR(double p, double r) {
 		return Math.sqrt(p * r);
 	}
 
-	private double IausUundR(double u, double r) {
+	private double iAusUundR(double u, double r) {
 		return u / r;
 	}
 
-	private double IausPundU(double p, double u) {
+	private double iAusPundU(double p, double u) {
 		return p / u;
 	}
 
-	private double IausPundR(double p, double r) {
+	private double iAusPundR(double p, double r) {
 		return Math.sqrt(p / r);
 	}
+	
+	private double rAusUundI(double u, double i) {
+        return u / i;
+    }
+
+    private double rAusPundI(double p, double i) {
+        return p / (i * i);
+    }
+
+    private double rAusUundP(double u, double p) {
+        return (u * u) / p;
+    }
 }
