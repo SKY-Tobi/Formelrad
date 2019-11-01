@@ -60,4 +60,16 @@ public class Calculator {
 	private double pAusRundI(double r, double i) {
 		return r * i * i;
 	}
+
+	private double UausRundI(double r, double i) {
+		return r * i;
+	}
+
+	private double UausPundI(double p, double i) {
+		return p / i;
+	}
+
+	private double UausPundR(double p, double r) {
+		return Math.sqrt(p * r);
+	}
 }
