@@ -49,7 +49,8 @@ public class Calculator {
 		 */
 	}
 	
-	/* Hier die Methoden mit den Formlen hinzufügen
-	 */
+	private double pAusUundI(double u, double i) {
+		 return u*i;
+		}
 	
 }
