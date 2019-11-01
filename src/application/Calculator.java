@@ -111,14 +111,17 @@ public class Calculator {
 	}
 
 	private double iAusUundR(double u, double r) {
+		System.out.println("Berechne Strom aus Spannung und Widerstand");
 		return u / r;
 	}
 
 	private double iAusPundU(double p, double u) {
+		System.out.println("Berechne Strom aus Leistung und Spannung");
 		return p / u;
 	}
 
 	private double iAusPundR(double p, double r) {
+		System.out.println("Berechne Strom aus Leistung und Widerstand");
 		return Math.sqrt(p / r);
 	}
 
