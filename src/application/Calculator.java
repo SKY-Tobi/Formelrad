@@ -44,12 +44,18 @@ public class Calculator {
 	}
 
 	public void calculate() {
-		/* Hier auf Grund der vorhanden Werte entscheiden
-		 * welche Methode unten aufgerufen werden muss.
-		 */
+		
 	}
 	
-	/* Hier die Methoden mit den Formlen hinzufügen
-	 */
+	private double UausRundI(double r, double i) {
+		return r * i;
+	}
 	
+	private double UausPundI(double p, double i) {
+		return p / i;
+	}
+	
+	private double UausPundR(double p, double r) {
+		return Math.sqrt(p * r);
+	}
 }
