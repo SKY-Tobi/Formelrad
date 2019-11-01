@@ -43,10 +43,25 @@ public class Calculator {
 	}
 
 	public void calculate() {
-		/*
-		 * Hier auf Grund der vorhanden Werte entscheiden welche Methode unten
-		 * aufgerufen werden muss.
-		 */
+		if (widerstand != 0.0 && leistung != 0.0 && spannung == 0.0 && strom == 0.0) {
+			spannung = uAusPundR(leistung, widerstand);
+			strom = iAusPundR(leistung, widerstand);
+		} else if (widerstand != 0.0 && leistung == 0.0 && spannung != 0.0 && strom == 0.0) {
+			leistung = pAusUundR(spannung, widerstand);
+			strom = iAusUundR(spannung, widerstand);
+		} else if (widerstand != 0.0 && leistung == 0.0 && spannung == 0.0 && strom != 0.0) {
+			spannung = uAusRundI(widerstand, strom);
+			leistung = pAusRundI(widerstand, strom);
+		} else if (widerstand == 0.0 && leistung != 0.0 && spannung != 0.0 && strom == 0.0) {
+			widerstand = rAusUundP(spannung, leistung);
+			strom = iAusPundU(leistung, spannung);
+		} else if (widerstand == 0.0 && leistung != 0.0 && spannung == 0.0 && strom != 0.0) {
+			widerstand = rAusPundI(leistung, strom);
+			spannung = uAusPundI(leistung, strom);
+		} else if (widerstand == 0.0 && leistung == 0.0 && spannung != 0.0 && strom != 0.0) {
+			widerstand = rAusUundI(spannung, strom);
+			leistung = pAusUundI(spannung, strom);
+		}
 	}
 
 	private double pAusUundI(double u, double i) {
@@ -61,39 +76,40 @@ public class Calculator {
 		return r * i * i;
 	}
 
-	private double UausRundI(double r, double i) {
+	private double uAusRundI(double r, double i) {
 		return r * i;
 	}
 
-	private double UausPundI(double p, double i) {
+	private double uAusPundI(double p, double i) {
 		return p / i;
 	}
 
-	private double UausPundR(double p, double r) {
+	private double uAusPundR(double p, double r) {
 		return Math.sqrt(p * r);
 	}
 
-	private double IausUundR(double u, double r) {
+	private double iAusUundR(double u, double r) {
 		return u / r;
 	}
 
-	private double IausPundU(double p, double u) {
+	private double iAusPundU(double p, double u) {
 		return p / u;
 	}
 
-	private double IausPundR(double p, double r) {
+	private double iAusPundR(double p, double r) {
 		return Math.sqrt(p / r);
 	}
-	
-	private double RausUundI(double u, double i) {
+
+	private double rAusUundI(double u, double i) {
 		return u / i;
 	}
-	
-	private double RausPundI(double p, double i) {
+
+	private double rAusPundI(double p, double i) {
 		return p / (i * i);
 	}
-	
-	private double RausUundP(double u, double p) {
+
+	private double rAusUundP(double u, double p) {
 		return (u * u) / p;
 	}
+
 }
