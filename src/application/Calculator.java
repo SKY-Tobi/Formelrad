@@ -56,6 +56,9 @@ public class Calculator {
 		if (widerstand != 0.0) {
 			notNullCounter++;
 		}
+		if (notNullCounter > 2) {
+			System.out.println("Warnung: Es wurden mehr als 2 Parameter eingegeben!");
+		}
 	}
 
 	private double pAusUundI(double u, double i) {
