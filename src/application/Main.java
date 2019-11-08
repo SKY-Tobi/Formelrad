@@ -88,26 +88,31 @@ public class Main extends Application {
 				txSpannung.setStyle("-fx-text-fill: black");
 				txStrom.setStyle("-fx-text-fill: black");
 				txWiderstand.setStyle("-fx-text-fill: black");
+				
 
-				if (txLeistung.getText().isEmpty() == false) {
-					power = Double.parseDouble(txLeistung.getText());
-				} else {
-					txLeistung.setStyle("-fx-text-fill: red");
-				}
-				if (txSpannung.getText().isEmpty() == false) {
-					tension = Double.parseDouble(txSpannung.getText());
-				} else {
-					txSpannung.setStyle("-fx-text-fill: red");
-				}
-				if (txStrom.getText().isEmpty() == false) {
-					current = Double.parseDouble(txStrom.getText());
-				} else {
-					txStrom.setStyle("-fx-text-fill: red");
-				}
-				if (txWiderstand.getText().isEmpty() == false) {
-					resistence = Double.parseDouble(txWiderstand.getText());
-				} else {
-					txWiderstand.setStyle("-fx-text-fill: red");
+				try {
+					if (txLeistung.getText().isEmpty() == false) {
+						power = Double.parseDouble(txLeistung.getText());
+					} else {
+						txLeistung.setStyle("-fx-text-fill: red");
+					}
+					if (txSpannung.getText().isEmpty() == false) {
+						tension = Double.parseDouble(txSpannung.getText());
+					} else {
+						txSpannung.setStyle("-fx-text-fill: red");
+					}
+					if (txStrom.getText().isEmpty() == false) {
+						current = Double.parseDouble(txStrom.getText());
+					} else {
+						txStrom.setStyle("-fx-text-fill: red");
+					}
+					if (txWiderstand.getText().isEmpty() == false) {
+						resistence = Double.parseDouble(txWiderstand.getText());
+					} else {
+						txWiderstand.setStyle("-fx-text-fill: red");
+					}
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
 				}
 				Calculator myCalculator = new Calculator(power, tension, current, resistence);
 
