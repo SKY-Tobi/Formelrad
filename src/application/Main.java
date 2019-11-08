@@ -113,6 +113,18 @@ public class Main extends Application {
 
 				myCalculator.calculate();
 
+				if (power != myCalculator.getLeistung()) {
+					txLeistung.setStyle("-fx-text-fill: red");
+				}
+				if (tension != myCalculator.getSpannung()) {
+					txSpannung.setStyle("-fx-text-fill: red");
+				}
+				if (current != myCalculator.getStrom()) {
+					txStrom.setStyle("-fx-text-fill: red");
+				}
+				if (resistence != myCalculator.getWiderstand()) {
+					txWiderstand.setStyle("-fx-text-fill: red");
+				}
 				txLeistung.setText(Double.toString(myCalculator.getLeistung()));
 				txSpannung.setText(Double.toString(myCalculator.getSpannung()));
 				txStrom.setText(Double.toString(myCalculator.getStrom()));
