@@ -4,7 +4,7 @@ package application;
  * Berechnet das Formelrad
  * 
  * @author Eric Gahlinger, Tobias Heierli
- * @version 01.11.2019
+ * @version 15.11.2019
  */
 public class Calculator {
 	private double leistung;
@@ -42,7 +42,7 @@ public class Calculator {
 				+ widerstand + "]";
 	}
 
-	public void calculate() {
+	public void calculate() throws IllegalArgumentException {
 		int notNullCounter = 0;
 		if (leistung != 0.0) {
 			notNullCounter++;
@@ -57,8 +57,13 @@ public class Calculator {
 			notNullCounter++;
 		}
 		if (notNullCounter > 2) {
-			System.out.println("Warnung: Es wurden mehr als 2 Parameter eingegeben!");
+			System.err.println("Warnung: Es wurden mehr als 2 Parameter eingegeben!");
+			throw new IllegalArgumentException("Es wurden mehr als 2 Parameter eingegeben!");
+		} else if (notNullCounter < 2) {
+			System.err.println("Achtung: Es wurden weniger als 2 Parameter angegeben!");
+			throw new IllegalArgumentException("Es wurden wenger als 2 Parameter eingegeben!");
 		}
+		
 		if (widerstand != 0.0 && leistung != 0.0) {
 			spannung = uAusPundR(leistung, widerstand);
 			strom = iAusPundR(leistung, widerstand);
