@@ -58,7 +58,9 @@ public class Calculator {
 		}
 		if (notNullCounter > 2) {
 			System.out.println("Warnung: Es wurden mehr als 2 Parameter eingegeben!");
-		}
+			throw new IllegalArgumentException("Es wurden mehr als 2 Parameter eingegeben!");
+		} 
+		
 		if (widerstand != 0.0 && leistung != 0.0) {
 			spannung = uAusPundR(leistung, widerstand);
 			strom = iAusPundR(leistung, widerstand);

@@ -159,17 +159,48 @@ public class Main extends Application {
 					expContent.setMaxWidth(Double.MAX_VALUE);
 					expContent.add(label, 0, 0);
 					expContent.add(textArea, 0, 1);
-					
-					
 
 					// Set expandable Exception into the dialog pane.
 					alert.getDialogPane().setExpandableContent(expContent);
 					alert.showAndWait();
 				}
 				Calculator myCalculator = new Calculator(power, tension, current, resistence);
+				
+				try {
+					myCalculator.calculate();
+				} catch (IllegalArgumentException e1) {
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.setTitle("Exception");
+					alert.setHeaderText(e1.getClass().getName());
+					alert.setContentText(e1.getMessage());
 
-				myCalculator.calculate();
+					// Create expandable Exception.
+					StringWriter sw = new StringWriter();
+					PrintWriter pw = new PrintWriter(sw);
+					e1.printStackTrace(pw);
+					String exceptionText = sw.toString();
 
+					Label label = new Label("The exception stacktrace was:");
+
+					TextArea textArea = new TextArea(exceptionText);
+					textArea.setEditable(false);
+					textArea.setWrapText(true);
+					textArea.setMinWidth(800);
+					textArea.setMaxWidth(Double.MAX_VALUE);
+					textArea.setMaxHeight(Double.MAX_VALUE);
+					GridPane.setVgrow(textArea, Priority.ALWAYS);
+					GridPane.setHgrow(textArea, Priority.ALWAYS);
+
+					GridPane expContent = new GridPane();
+					expContent.setMaxWidth(Double.MAX_VALUE);
+					expContent.add(label, 0, 0);
+					expContent.add(textArea, 0, 1);
+
+					// Set expandable Exception into the dialog pane.
+					alert.getDialogPane().setExpandableContent(expContent);
+					alert.showAndWait();
+				}
+				
 				if (power != myCalculator.getLeistung()) {
 					txLeistung.setStyle("-fx-text-fill: red");
 				}
