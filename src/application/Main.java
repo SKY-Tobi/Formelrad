@@ -78,6 +78,19 @@ public class Main extends Application {
 			btnBerechnen.setText("Berechnen");
 			root.getChildren().add(btnBerechnen);
 
+			txLeistung.setOnMouseClicked((e) -> {
+				txLeistung.setStyle("-fx-text-fill: black");
+			});
+			txSpannung.setOnMouseClicked((e) -> {
+				txSpannung.setStyle("-fx-text-fill: black");
+			});
+			txStrom.setOnMouseClicked((e) -> {
+				txStrom.setStyle("-fx-text-fill: black");
+			});
+			txWiderstand.setOnMouseClicked((e) -> {
+				txWiderstand.setStyle("-fx-text-fill: black");
+			});
+
 			btnBerechnen.setOnAction(e -> {
 				double power = 0.0;
 				double tension = 0.0;
@@ -125,6 +138,7 @@ public class Main extends Application {
 				if (resistence != myCalculator.getWiderstand()) {
 					txWiderstand.setStyle("-fx-text-fill: red");
 				}
+
 				txLeistung.setText(Double.toString(myCalculator.getLeistung()));
 				txSpannung.setText(Double.toString(myCalculator.getSpannung()));
 				txStrom.setText(Double.toString(myCalculator.getStrom()));
