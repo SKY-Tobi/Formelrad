@@ -23,7 +23,7 @@ import javafx.scene.text.Font;
  * Formelrad Application
  * 
  * @author Tobias Heierli, Eric Gahlinger
- * @version 01.11.2019
+ * @version 15.11.2019
  */
 public class Main extends Application {
 	@Override
@@ -98,7 +98,6 @@ public class Main extends Application {
 			txWiderstand.setOnMouseClicked((e) -> {
 				txWiderstand.setStyle("-fx-text-fill: black");
 			});
-
 			btnBerechnen.setOnAction(e -> {
 				double power = 0.0;
 				double tension = 0.0;
@@ -109,7 +108,6 @@ public class Main extends Application {
 				txSpannung.setStyle("-fx-text-fill: black");
 				txStrom.setStyle("-fx-text-fill: black");
 				txWiderstand.setStyle("-fx-text-fill: black");
-				
 
 				try {
 					if (txLeistung.getText().isEmpty() == false) {
@@ -132,6 +130,29 @@ public class Main extends Application {
 					} else {
 						txWiderstand.setStyle("-fx-text-fill: red");
 					}
+					
+					Calculator myCalculator = new Calculator(power, tension, current, resistence);
+
+					myCalculator.calculate();
+
+					if (power != myCalculator.getLeistung()) {
+						txLeistung.setStyle("-fx-text-fill: red");
+					}
+					if (tension != myCalculator.getSpannung()) {
+						txSpannung.setStyle("-fx-text-fill: red");
+					}
+					if (current != myCalculator.getStrom()) {
+						txStrom.setStyle("-fx-text-fill: red");
+					}
+					if (resistence != myCalculator.getWiderstand()) {
+						txWiderstand.setStyle("-fx-text-fill: red");
+					}
+					
+					txLeistung.setText(Double.toString(myCalculator.getLeistung()));
+					txSpannung.setText(Double.toString(myCalculator.getSpannung()));
+					txStrom.setText(Double.toString(myCalculator.getStrom()));
+					txWiderstand.setText(Double.toString(myCalculator.getWiderstand()));
+
 				} catch (NumberFormatException e1) {
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.setTitle("Exception");
@@ -163,11 +184,7 @@ public class Main extends Application {
 					// Set expandable Exception into the dialog pane.
 					alert.getDialogPane().setExpandableContent(expContent);
 					alert.showAndWait();
-				}
-				Calculator myCalculator = new Calculator(power, tension, current, resistence);
-				
-				try {
-					myCalculator.calculate();
+
 				} catch (IllegalArgumentException e1) {
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.setTitle("Exception");
@@ -200,24 +217,6 @@ public class Main extends Application {
 					alert.getDialogPane().setExpandableContent(expContent);
 					alert.showAndWait();
 				}
-				
-				if (power != myCalculator.getLeistung()) {
-					txLeistung.setStyle("-fx-text-fill: red");
-				}
-				if (tension != myCalculator.getSpannung()) {
-					txSpannung.setStyle("-fx-text-fill: red");
-				}
-				if (current != myCalculator.getStrom()) {
-					txStrom.setStyle("-fx-text-fill: red");
-				}
-				if (resistence != myCalculator.getWiderstand()) {
-					txWiderstand.setStyle("-fx-text-fill: red");
-				}
-
-				txLeistung.setText(Double.toString(myCalculator.getLeistung()));
-				txSpannung.setText(Double.toString(myCalculator.getSpannung()));
-				txStrom.setText(Double.toString(myCalculator.getStrom()));
-				txWiderstand.setText(Double.toString(myCalculator.getWiderstand()));
 			});
 
 			Scene scene = new Scene(root, 330, 490);
